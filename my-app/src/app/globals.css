@@ -25,7 +25,7 @@ body {
   justify-content: space-around;
   border: 1px solid black;
   margin: 20px;
-  max-width: 30%;
+  max-width: 50%;
 }
 
 .left-container, .right-container {
@@ -49,4 +49,8 @@ body {
   display: block;
   background-color: gray;
   margin: 3px;
+}
+
+.checkbox {
+  margin-right: 3px;
 }
