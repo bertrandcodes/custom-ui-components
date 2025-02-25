@@ -62,3 +62,9 @@ body {
 hr {
   margin: 5px 0;
 }
+
+.add-new {
+  border: 1px solid black;
+  border-radius: 3px;
+  margin: 5px 0;
+}

@@ -35,6 +35,8 @@ export default function Home() {
   // rename map instead of list for clarity
   const [leftList, setLeftList] = useState(new Map(createListContent(LEFT_DEFAULTS)))
   const [rightList, setRightList] = useState(new Map(createListContent(RIGHT_DEFAULTS)))
+  const [leftInputVal, setLeftInputVal] = useState("")
+  const [rightInputVal, setRightInputVal] = useState("")
 
   function getNumSelected(list) {
     return Array.from(list).reduce((acc, [_, val]) => {
@@ -99,9 +101,24 @@ export default function Home() {
     side === LEFT_SIDE ? setLeftList(newMap) : setRightList(newMap)
   }
 
+  function addElement(e, list, setList, val, setVal) {
+    if (list.has(val)) return
+    if (e.key === "Enter") {
+      const map = new Map(list)
+      map.set(val, false)
+      setList(map)
+      setVal("")
+    }
+  }
+
+  function handleInput(e, setVal) {
+    setVal(e.target.value)
+  }
+
   return (
     <div className="main-container">
       <div className="left-container">
+        <input className="add-new" onChange={(e) => handleInput(e, setLeftInputVal)} onKeyDown={(e) => addElement(e, leftList, setLeftList, leftInputVal, setLeftInputVal)} value={leftInputVal} />
         <hr />
         <input type="checkbox" className="checkbox" onChange={() => toggleAll(LEFT_SIDE, leftNumSelected, leftList)} checked={leftNumSelected == leftList.size && leftNumSelected !== 0} />
         {leftMessage}
@@ -119,6 +136,7 @@ export default function Home() {
         <button onClick={() => updateSide(RIGHT_SIDE, rightList, leftList)} className={`button ${!rightNumSelected ? "hidden" : ""}`}>{"<"}</button>
       </div>
       <div className="right-container">
+        <input className="add-new" onChange={(e) => handleInput(e, setRightInputVal)} onKeyDown={(e) => addElement(e, rightList, setRightList, rightInputVal, setRightInputVal)} value={rightInputVal} />
         <hr />
         <input type="checkbox" className="checkbox" onChange={() => toggleAll(RIGHT_SIDE, rightNumSelected, rightList)} checked={rightNumSelected == rightList.size && rightNumSelected !== 0} />
         {rightMessage}
