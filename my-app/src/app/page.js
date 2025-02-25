@@ -4,24 +4,25 @@
 
 import { useState } from "react";
 
-// Format with css
-// get buttons down
+// start with 2 default lists
 
-// one state to hold both sides, each el is an obj: key = title : val = {
-// state:
-// selected: 
-// }
+// clicking checkbox will set that checked state to true
+// we will use javascript map
+// function for switching sides
+// we go through the list where items are leaving
+// if checked, add to the other map
+// delete item from current map
 
-// we render on one sider by filtering. but we need to make 2 passes
+// how do we get the 2/4 number?
+// we can store separately, but that can get out of sync
+// need to just have a function that tells us num selected
 
-// instead we can have 2 states, representing each side, but then bring each side over is a pain.
+// on clicking checkbox, if some are highlighted, highlight res. else, unhighlight all
 
-// lets do one state
-// each list item is it's own component which a checkbox thats controlled by state
+// button disabled state has to do with num selected
 
-// on button click, we change state
+// input creates a new item, prevent duplicate
 
-// disable buttons accordingly
 
 const itemList = {
   "HTML": {
@@ -81,11 +82,10 @@ export default function Home() {
         newSet.delete(item)
       }
       if (switchToLeft) {
-        items[item].onLeft = true
+        newObj[item].onLeft = true
       } else {
-        items[item].onLeft = false
+        newObj[item].onLeft = false
       }
-      console.log(switchToLeft, items[item], item, 'item')
     })
     setSelectedItems(newSet)
     setItems(newObj)
