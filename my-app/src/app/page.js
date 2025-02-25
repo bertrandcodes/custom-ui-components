@@ -2,7 +2,7 @@
 
 "use client"
 
-import { useState } from "react";
+import { useMemo, useState } from "react";
 
 // start with 2 default lists
 
@@ -32,12 +32,33 @@ const createListContent = (defaults) => defaults.map(el => (
   [el, false]))
 
 export default function Home() {
+  // rename map instead of list for clarity
   const [leftList, setLeftList] = useState(new Map(createListContent(LEFT_DEFAULTS)))
   const [rightList, setRightList] = useState(new Map(createListContent(RIGHT_DEFAULTS)))
+
+  function getNumSelected(list) {
+    return Array.from(list).reduce((acc, [_, val]) => {
+      return val ? acc + 1 : acc
+    }, 0)
+  }
+
+  const leftNumSelected = useMemo(() => {
+    return getNumSelected(leftList)
+  }, [leftList])
+
+  const rightNumSelected = useMemo(() => {
+    return getNumSelected(rightList)
+  }, [rightList])
+
+  const leftMessage = `${leftNumSelected}/${leftList.size} Selected`
+
+  const rightMessage = `${rightNumSelected}/${rightList.size} Selected`
 
   function toggleCheck(side, list, item) {
     const obj = Object.fromEntries(list)
     obj[item] = !obj[item]
+
+    // don't use switch since there are only 2 options
     switch (side) {
       case LEFT_SIDE:
         setLeftList(new Map(Object.entries(obj)))
@@ -71,9 +92,20 @@ export default function Home() {
     }
   }
 
+  function toggleAll(side, numSelected, list) {
+    const checkAll = numSelected !== list.size
+    const newList = Array.from(list).map(([key, val]) => [key, checkAll])
+    const newMap = new Map(newList)
+    side === LEFT_SIDE ? setLeftList(newMap) : setRightList(newMap)
+  }
+
   return (
     <div className="main-container">
       <div className="left-container">
+        <hr />
+        <input type="checkbox" className="checkbox" onChange={() => toggleAll(LEFT_SIDE, leftNumSelected, leftList)} checked={leftNumSelected == leftList.size && leftNumSelected !== 0} />
+        {leftMessage}
+        <hr />
         {/* make this into it's own component, we don't want the top level component to be concerned with mapping */}
         <ul>
           {Array.from(leftList).map(([el, isChecked]) => (
@@ -83,11 +115,14 @@ export default function Home() {
       </div>
       <br />
       <div className="button-container">
-        <button onClick={() => updateSide(LEFT_SIDE, leftList, rightList)} className="button">{">"}</button>
-        <button onClick={() => updateSide(RIGHT_SIDE, rightList, leftList)} className="button">{"<"}</button>
+        <button onClick={() => updateSide(LEFT_SIDE, leftList, rightList)} className={`button ${!leftNumSelected ? "hidden" : ""}`}>{">"}</button>
+        <button onClick={() => updateSide(RIGHT_SIDE, rightList, leftList)} className={`button ${!rightNumSelected ? "hidden" : ""}`}>{"<"}</button>
       </div>
-      <br />
       <div className="right-container">
+        <hr />
+        <input type="checkbox" className="checkbox" onChange={() => toggleAll(RIGHT_SIDE, rightNumSelected, rightList)} checked={rightNumSelected == rightList.size && rightNumSelected !== 0} />
+        {rightMessage}
+        <hr />
         <ul>
           {Array.from(rightList).map(([el, isChecked]) => (
             <ListItem key={el} name={el} isChecked={isChecked} toggleCheck={() => toggleCheck(RIGHT_SIDE, rightList, el)} />
@@ -106,108 +141,3 @@ function ListItem({ name, isChecked, toggleCheck }) {
     </li>
   )
 }
-
-// const itemList = {
-//   "HTML": {
-//     onLeft: true,
-//   },
-//   "JavaScript": {
-//     onLeft: true,
-//   },
-//   "CSS": {
-//     onLeft: true,
-//   },
-//   "TypeScript": {
-//     onLeft: true,
-//   },
-//   "React": {
-//     onLeft: false,
-//   },
-//   "Angular": {
-//     onLeft: false,
-//   },
-//   "Vue": {
-//     onLeft: false,
-//   },
-//   "Svelte": {
-//     onLeft: false,
-//   },
-// }
-
-// export default function Home() {
-//   const [items, setItems] = useState(itemList)
-//   const [selectedItems, setSelectedItems] = useState(new Set())
-
-//   const switchSides = (target) => {
-//     const switchToLeft = target === "left"
-//     const newObj = { ...items }
-//     Object.keys(newObj).forEach(item => items[item].onLeft = switchToLeft)
-//     setItems(newObj)
-//   }
-
-//   const updateSelected = (name) => {
-//     const newSet = new Set(selectedItems)
-//     if (newSet.has(name)) {
-//       newSet.delete(name)
-//     } else {
-//       newSet.add(name)
-//     }
-//     setSelectedItems(newSet)
-//   }
-
-//   const swap = (target) => {
-//     const switchToLeft = target === "left"
-//     const newObj = { ...items }
-//     const newSet = new Set(selectedItems)
-
-//     Array.from(selectedItems).forEach(item => {
-//       if ((switchToLeft && !items[item].onLeft) || (!switchToLeft && items[item].onLeft)) {
-//         newSet.delete(item)
-//       }
-//       if (switchToLeft) {
-//         newObj[item].onLeft = true
-//       } else {
-//         newObj[item].onLeft = false
-//       }
-//     })
-//     setSelectedItems(newSet)
-//     setItems(newObj)
-//   }
-
-//   return (
-//     <div className="main-container">
-//       {console.log(selectedItems, 'selected')}
-//       <div className="left-container">
-//         <ul>
-//           {Object.keys(items).filter((itemKey) => items[itemKey].onLeft).map((name) => (
-//             <ListItem name={name} key={name} isSelected={selectedItems.has(name)} updateSelected={updateSelected} />
-//           ))}
-//         </ul>
-//       </div>
-//       <br />
-//       <div className="button-container">
-//         <button onClick={() => switchSides("right")} className="button">{">>"}</button>
-//         <button onClick={() => swap("right")} className="button">{">"}</button>
-//         <button onClick={() => swap("left")} className="button">{"<"}</button>
-//         <button onClick={() => switchSides("left")} className="button">{"<<"}</button>
-//       </div>
-//       <br />
-//       <div className="right-container">
-//         <ul>
-//           {Object.keys(items).filter((itemKey) => !items[itemKey].onLeft).map((name) => (
-//             <ListItem name={name} key={name} isSelected={selectedItems.has(name)} updateSelected={updateSelected} />
-//           ))}
-//         </ul>
-//       </div>
-//     </div>
-//   );
-// }
-
-// function ListItem({ name, isSelected, updateSelected }) {
-//   return (
-//     <li>
-//       <input type="checkbox" className="checkbox" checked={isSelected} onChange={() => { updateSelected(name) }} />
-//       <span>{name}</span>
-//     </li>
-//   )
-// }

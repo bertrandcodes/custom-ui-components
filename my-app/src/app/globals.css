@@ -49,8 +49,16 @@ body {
   display: block;
   background-color: gray;
   margin: 3px;
+
+  &.hidden {
+    display: none;
+  }
 }
 
 .checkbox {
   margin-right: 3px;
+}
+
+hr {
+  margin: 5px 0;
 }
