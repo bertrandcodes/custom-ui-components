@@ -23,6 +23,10 @@ import { useMemo, useState } from "react";
 
 // input creates a new item, prevent duplicate
 
+// LEARNING POINTS:
+
+// wrap input in form element for native button handling
+
 const LEFT_DEFAULTS = ["HTML", "JavaScript", "CSS", "TypeScript"]
 const RIGHT_DEFAULTS = ["React", "Angular", "Vue", "Svelte"]
 const LEFT_SIDE = "left"
@@ -51,7 +55,7 @@ export default function Home() {
   const rightNumSelected = useMemo(() => {
     return getNumSelected(rightList)
   }, [rightList])
-
+  
   const leftMessage = `${leftNumSelected}/${leftList.size} Selected`
 
   const rightMessage = `${rightNumSelected}/${rightList.size} Selected`
@@ -96,7 +100,7 @@ export default function Home() {
 
   function toggleAll(side, numSelected, list) {
     const checkAll = numSelected !== list.size
-    const newList = Array.from(list).map(([key, val]) => [key, checkAll])
+    const newList = Array.from(list).map(([key, _]) => [key, checkAll])
     const newMap = new Map(newList)
     side === LEFT_SIDE ? setLeftList(newMap) : setRightList(newMap)
   }
