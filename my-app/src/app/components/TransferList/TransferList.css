@@ -1,0 +1,48 @@
+.main-container {
+  display: flex;
+  justify-content: space-around;
+  border: 1px solid black;
+  margin: 20px;
+}
+
+.left-container,
+.right-container {
+  width: 100%;
+  padding: 10px;
+}
+
+.left-container {
+  border-right: 1px solid black;
+}
+
+.right-container {
+  border-left: 1px solid black;
+}
+
+.button-container {
+  padding: 5px;
+}
+
+.button {
+  display: block;
+  background-color: gray;
+  margin: 3px;
+
+  &.hidden {
+    display: none;
+  }
+}
+
+.checkbox {
+  margin-right: 3px;
+}
+
+.hr {
+  margin: 5px 0;
+}
+
+.add-new {
+  border: 1px solid black;
+  border-radius: 3px;
+  margin: 5px 0;
+}
