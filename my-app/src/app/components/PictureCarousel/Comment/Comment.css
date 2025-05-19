@@ -1,0 +1,48 @@
+.comment {
+  margin-bottom: 15px;
+  padding: 15px;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.comment.selected {
+  border: 2px solid #007bff;
+}
+
+.comment-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+.comment-message {
+  margin: 0;
+  flex: 1;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.reply-button {
+  padding: 5px 10px;
+  background-color: transparent;
+  color: #007bff;
+  border: 1px solid #007bff;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 12px;
+  transition: all 0.3s ease;
+}
+
+.reply-button:hover {
+  background-color: #007bff;
+  color: white;
+}
+
+.comment-children {
+  margin-left: 20px;
+  margin-top: 15px;
+  padding-left: 15px;
+  border-left: 2px solid #eee;
+}
