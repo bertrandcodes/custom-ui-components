@@ -1,0 +1,212 @@
+[
+  {
+    "id": 1,
+    "title": "Classic Potato Chips",
+    "price": 2.99,
+    "discountAmount": 0.5,
+    "onSale": true,
+    "category": "chips",
+    "imageUrl": "https://images.unsplash.com/photo-1566478989037-eec170784d0b?w=500",
+    "tags": ["on-sale"]
+  },
+  {
+    "id": 2,
+    "title": "BBQ Potato Chips",
+    "price": 2.99,
+    "discountAmount": 0,
+    "onSale": false,
+    "category": "chips",
+    "imageUrl": "https://images.unsplash.com/photo-1566478989037-eec170784d0b?w=500",
+    "tags": ["out-of-stock"]
+  },
+  {
+    "id": 3,
+    "title": "Salt & Vinegar Chips",
+    "price": 2.99,
+    "discountAmount": 0.75,
+    "onSale": true,
+    "category": "chips",
+    "imageUrl": "https://images.unsplash.com/photo-1566478989037-eec170784d0b?w=500",
+    "tags": ["on-sale", "new-arrival"]
+  },
+  {
+    "id": 4,
+    "title": "Tortilla Chips",
+    "price": 3.49,
+    "discountAmount": 0,
+    "onSale": false,
+    "category": "chips",
+    "imageUrl": "https://images.unsplash.com/photo-1566478989037-eec170784d0b?w=500",
+    "tags": []
+  },
+  {
+    "id": 5,
+    "title": "Sour Cream & Onion Chips",
+    "price": 2.99,
+    "discountAmount": 0.5,
+    "onSale": true,
+    "category": "chips",
+    "imageUrl": "https://images.unsplash.com/photo-1566478989037-eec170784d0b?w=500",
+    "tags": ["on-sale"]
+  },
+  {
+    "id": 6,
+    "title": "Jalapeño Chips",
+    "price": 3.29,
+    "discountAmount": 0,
+    "onSale": false,
+    "category": "chips",
+    "imageUrl": "https://images.unsplash.com/photo-1566478989037-eec170784d0b?w=500",
+    "tags": ["new-arrival"]
+  },
+  {
+    "id": 7,
+    "title": "Kettle Cooked Chips",
+    "price": 3.99,
+    "discountAmount": 1.0,
+    "onSale": true,
+    "category": "chips",
+    "imageUrl": "https://images.unsplash.com/photo-1566478989037-eec170784d0b?w=500",
+    "tags": ["on-sale", "out-of-stock"]
+  },
+  {
+    "id": 8,
+    "title": "Classic Cola",
+    "price": 1.99,
+    "discountAmount": 0.25,
+    "onSale": true,
+    "category": "soda",
+    "imageUrl": "https://images.unsplash.com/photo-1622483767028-3f66f32aef97?w=500",
+    "tags": ["on-sale"]
+  },
+  {
+    "id": 9,
+    "title": "Diet Cola",
+    "price": 1.99,
+    "discountAmount": 0,
+    "onSale": false,
+    "category": "soda",
+    "imageUrl": "https://images.unsplash.com/photo-1622483767028-3f66f32aef97?w=500",
+    "tags": ["out-of-stock"]
+  },
+  {
+    "id": 10,
+    "title": "Lemon-Lime Soda",
+    "price": 1.99,
+    "discountAmount": 0.5,
+    "onSale": true,
+    "category": "soda",
+    "imageUrl": "https://images.unsplash.com/photo-1622483767028-3f66f32aef97?w=500",
+    "tags": ["on-sale", "new-arrival"]
+  },
+  {
+    "id": 11,
+    "title": "Orange Soda",
+    "price": 1.99,
+    "discountAmount": 0,
+    "onSale": false,
+    "category": "soda",
+    "imageUrl": "https://images.unsplash.com/photo-1622483767028-3f66f32aef97?w=500",
+    "tags": []
+  },
+  {
+    "id": 12,
+    "title": "Root Beer",
+    "price": 2.29,
+    "discountAmount": 0.3,
+    "onSale": true,
+    "category": "soda",
+    "imageUrl": "https://images.unsplash.com/photo-1622483767028-3f66f32aef97?w=500",
+    "tags": ["on-sale"]
+  },
+  {
+    "id": 13,
+    "title": "Ginger Ale",
+    "price": 2.29,
+    "discountAmount": 0,
+    "onSale": false,
+    "category": "soda",
+    "imageUrl": "https://images.unsplash.com/photo-1622483767028-3f66f32aef97?w=500",
+    "tags": ["new-arrival"]
+  },
+  {
+    "id": 14,
+    "title": "Cream Soda",
+    "price": 2.29,
+    "discountAmount": 0.4,
+    "onSale": true,
+    "category": "soda",
+    "imageUrl": "https://images.unsplash.com/photo-1622483767028-3f66f32aef97?w=500",
+    "tags": ["on-sale", "out-of-stock"]
+  },
+  {
+    "id": 15,
+    "title": "Chocolate Chip Cookies",
+    "price": 3.99,
+    "discountAmount": 0.75,
+    "onSale": true,
+    "category": "cookies",
+    "imageUrl": "https://images.unsplash.com/photo-1499636136210-6f4ee915583e?w=500",
+    "tags": ["on-sale"]
+  },
+  {
+    "id": 16,
+    "title": "Oatmeal Raisin Cookies",
+    "price": 3.99,
+    "discountAmount": 0,
+    "onSale": false,
+    "category": "cookies",
+    "imageUrl": "https://images.unsplash.com/photo-1499636136210-6f4ee915583e?w=500",
+    "tags": ["out-of-stock"]
+  },
+  {
+    "id": 17,
+    "title": "Double Chocolate Cookies",
+    "price": 4.29,
+    "discountAmount": 0.5,
+    "onSale": true,
+    "category": "cookies",
+    "imageUrl": "https://images.unsplash.com/photo-1499636136210-6f4ee915583e?w=500",
+    "tags": ["on-sale", "new-arrival"]
+  },
+  {
+    "id": 18,
+    "title": "Peanut Butter Cookies",
+    "price": 3.99,
+    "discountAmount": 0,
+    "onSale": false,
+    "category": "cookies",
+    "imageUrl": "https://images.unsplash.com/photo-1499636136210-6f4ee915583e?w=500",
+    "tags": []
+  },
+  {
+    "id": 19,
+    "title": "Sugar Cookies",
+    "price": 3.49,
+    "discountAmount": 0.4,
+    "onSale": true,
+    "category": "cookies",
+    "imageUrl": "https://images.unsplash.com/photo-1499636136210-6f4ee915583e?w=500",
+    "tags": ["on-sale"]
+  },
+  {
+    "id": 20,
+    "title": "Snickerdoodle Cookies",
+    "price": 3.49,
+    "discountAmount": 0,
+    "onSale": false,
+    "category": "cookies",
+    "imageUrl": "https://images.unsplash.com/photo-1499636136210-6f4ee915583e?w=500",
+    "tags": ["new-arrival"]
+  },
+  {
+    "id": 21,
+    "title": "White Chocolate Macadamia Cookies",
+    "price": 4.49,
+    "discountAmount": 0.75,
+    "onSale": true,
+    "category": "cookies",
+    "imageUrl": "https://images.unsplash.com/photo-1499636136210-6f4ee915583e?w=500",
+    "tags": ["on-sale", "out-of-stock"]
+  }
+]

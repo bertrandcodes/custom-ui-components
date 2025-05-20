@@ -25,9 +25,6 @@ const initialState = {
   byId: {
     1: { id: 1, message: "comment", parentId: null, children: [2] },
     2: { id: 2, message: "comment of a comment", parentId: 1, children: [3] },
-    3: { id: 3, message: "anotha one", parentId: 2, children: [] },
-    4: { id: 4, message: "comment 2?", parentId: null, children: [] },
-    5: { id: 5, message: "comment 3?", parentId: null, children: [] },
   },
   // Array of root comment IDs
   rootIds: [1, 4, 5],

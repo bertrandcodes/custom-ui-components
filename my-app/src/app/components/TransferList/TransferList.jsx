@@ -200,25 +200,3 @@ function ListItem({ name, isChecked, toggleCheck }) {
     </li>
   );
 }
-
-// Storybook stories
-TransferList.stories = {
-  title: "Components/TransferList",
-  component: TransferList,
-  tags: ["autodocs"],
-  parameters: {
-    layout: "centered",
-  },
-  argTypes: {
-    leftDefaults: { control: "array" },
-    rightDefaults: { control: "array" },
-  },
-};
-
-// Default transfer list with programming languages
-TransferList.Default = {
-  args: {
-    leftDefaults: ["HTML", "JavaScript", "CSS", "TypeScript"],
-    rightDefaults: ["React", "Angular", "Vue", "Svelte"],
-  },
-};
