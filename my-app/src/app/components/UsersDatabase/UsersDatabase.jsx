@@ -1,7 +1,8 @@
 "use client";
 
-import { useRef, useState } from "react";
+import { useMemo, useRef, useState } from "react";
 import "./UsersDatabase.css";
+
 /*
 Components
 - UsersDatabase
@@ -32,7 +33,13 @@ const UsersDatabase = () => {
 
   const ref = useRef(3);
 
-  const disableCreate = selectedId === null && firstName.length === 0 && lastName.length === 0;
+  const disableCreate = selectedId === null || firstName.length === 0 || lastName.length === 0;
+  const noUserSelected = selectedId === null;
+
+  const filteredUsers = useMemo(
+    () => Object.entries(names).filter(([_, name]) => name.includes(searchVal)),
+    [names, searchVal],
+  );
 
   const createUser = () => {
     setNames((prevState) => ({
@@ -40,6 +47,26 @@ const UsersDatabase = () => {
       [ref.current]: `${firstName} ${lastName}`,
     }));
     ref.current += 1;
+    setFirstName("");
+    setLastName("");
+  };
+
+  const updateUser = () => {
+    if (!names[selectedId] || firstName.length === 0 || lastName.length === 0) return;
+    setNames((prevState) => ({
+      ...prevState,
+      [selectedId]: `${firstName} ${lastName}`,
+    }));
+  };
+
+  const deleteUser = () => {
+    const newNames = { ...names };
+    delete newNames[selectedId];
+    setNames(newNames);
+  };
+
+  const onCancel = () => {
+    setSelectedId(null);
     setFirstName("");
     setLastName("");
   };
@@ -54,17 +81,15 @@ const UsersDatabase = () => {
       />
       <div className="users-database__data-table">
         <ul>
-          {Object.entries(names)
-            .filter(([_, name]) => name.includes(searchVal))
-            .map(([id, name]) => (
-              <li
-                key={id}
-                onClick={() => setSelectedId(id)}
-                className={`${selectedId === id ? "selected" : ""}`}
-              >
-                {name}
-              </li>
-            ))}
+          {filteredUsers.map(([id, name]) => (
+            <li
+              key={id}
+              onClick={() => setSelectedId(id)}
+              className={`${selectedId === id ? "selected" : ""}`}
+            >
+              {name}
+            </li>
+          ))}
         </ul>
       </div>
       <div className="users-database__name-inputs">
@@ -85,9 +110,15 @@ const UsersDatabase = () => {
         <button disabled={disableCreate} onClick={createUser}>
           Create
         </button>
-        <button>Update</button>
-        <button>Delete</button>
-        <button onClick={() => setSelectedId(null)}>Cancel</button>
+        <button disabled={noUserSelected} onClick={updateUser}>
+          Update
+        </button>
+        <button disabled={noUserSelected} onClick={deleteUser}>
+          Delete
+        </button>
+        <button disabled={noUserSelected} onClick={onCancel}>
+          Cancel
+        </button>
       </div>
     </div>
   );
