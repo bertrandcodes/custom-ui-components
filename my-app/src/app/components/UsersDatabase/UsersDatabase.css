@@ -3,11 +3,17 @@
   display: grid;
   grid-template-rows: repeat(3, auto);
   grid-template-columns: repeat(2, auto);
+  gap: 10px;
   input {
     outline: 1px solid black;
     width: 200px;
   }
-  gap: 10px;
+  li {
+    cursor: pointer;
+    &.selected {
+      background-color: rgb(170, 170, 170);
+    }
+  }
 }
 
 .users-database--search {
