@@ -1,9 +1,9 @@
-import UsersDatabase from "./components/UsersDatabase/UsersDatabase";
+import PhoneValidator from "./components/PhoneValidator/PhoneValidator";
 
 export default function Home() {
   return (
     <>
-      <UsersDatabase />
+      <PhoneValidator />
     </>
   );
 }
