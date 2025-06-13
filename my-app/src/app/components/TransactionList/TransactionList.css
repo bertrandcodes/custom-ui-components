@@ -1,0 +1,8 @@
+.transaction-list__input {
+  border: 1px solid black;
+}
+
+.transaction-list__li--active {
+  background-color: blue;
+  color: white;
+}

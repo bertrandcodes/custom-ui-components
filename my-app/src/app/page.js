@@ -1,9 +1,9 @@
-import PhoneValidator from "./components/PhoneValidator/PhoneValidator";
+import TransactionList from "./components/TransactionList/TransactionList";
 
 export default function Home() {
   return (
     <>
-      <PhoneValidator />
+      <TransactionList />
     </>
   );
 }
